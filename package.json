@@ -1,0 +1,16 @@
+{
+  "name": "archive",
+  "version": "0.0.0",
+  "description": "Github Users Profile Archive",
+  "main": "action.js",
+  "type": "module",
+  "repository": "https://github.com/codinasion/archive",
+  "author": "Harsh Raj <harshraj8843@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "node-fetch": "^3.3.0",
+    "puppeteer": "^19.7.1"
+  }
+}

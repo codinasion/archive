@@ -1,0 +1,62 @@
+name: Click Github Username 00
+
+on:
+  workflow_dispatch:
+  # # Run every 6 minutes
+  # schedule:
+  #   - cron: "0/6 * * * *"
+
+env:
+  IMAGE_BRANCH: images-00
+
+jobs:
+  click-github-username-00:
+    if: github.repository == 'codinasion/archive'
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    name: Click Github Username
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Install dependencies
+      - name: Yarn
+        run: |
+          yarn
+
+      ##########  Click Github Username  ##########
+      - name: Click Github Username
+        id: click-github-username
+        uses: ./action/
+        with:
+          CLICK_GITHUB_USERNAME_GET: true
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          BACKEND_ACCESS_TOKEN: ${{ secrets.BACKEND_ACCESS_TOKEN }}
+
+      ##########  Push Image to 'images' branch ##########
+      - name: push image
+        if: steps.click-github-username.outputs.available_to_click == 'true'
+        uses: crazy-max/ghaction-github-pages@v3.0.0
+        with:
+          target_branch: ${{ env.IMAGE_BRANCH }}
+          build_dir: images
+          committer: Harsh Raj <harshraj8843@users.noreply.github.com>
+          author: Harsh Raj <harshraj8843@users.noreply.github.com>
+          commit_message: Click ${{ steps.click-github-username.outputs.username }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      ########## POST click to backend ##########
+      - name: POST Click
+        if: steps.click-github-username.outputs.available_to_click == 'true'
+        uses: ./action/
+        with:
+          CLICK_GITHUB_USERNAME_POST: true
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          BACKEND_ACCESS_TOKEN: ${{ secrets.BACKEND_ACCESS_TOKEN }}
+          USERNAME: ${{ steps.click-github-username.outputs.username }}
+          USERID: ${{ steps.click-github-username.outputs.userid }}
+          IMAGE_BRANCH: ${{ env.IMAGE_BRANCH }}

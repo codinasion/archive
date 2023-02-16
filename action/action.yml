@@ -1,0 +1,67 @@
+name: "Archive"
+
+description: "Archive"
+
+inputs:
+  # Primary Inputs
+  OWNER:
+    description: "Repository Owner"
+    required: true
+    default: "codinasion"
+
+  REPO:
+    description: "Repo Name"
+    required: true
+    default: "archive"
+
+  TOKEN:
+    description: "Github auto-generated access token"
+    required: true
+    default: "1234567890"
+
+  # Secondary Inputs
+  USERID:
+    description: "Github User Id"
+    required: true
+    default: "9919"
+
+  USERNAME:
+    description: "Github Username"
+    required: true
+    default: "github"
+
+  IMAGE_BRANCH:
+    description: "Image Branch"
+    required: true
+    default: "images"
+
+  # Backend Inputs
+  BACKEND_URL:
+    description: "Backend Url"
+    required: true
+    default: "http://127.0.0.1:8000/api"
+
+  BACKEND_ACCESS_TOKEN:
+    description: "Backend access token"
+    required: true
+    default: "1234567890"
+
+  # Workflow Trigger Inputs
+  SCRAP_GITHUB_USERNAMES:
+    description: "Scrap Github Usernames"
+    required: true
+    default: "false"
+
+  CLICK_GITHUB_USERNAME_GET:
+    description: "GET and click github username"
+    required: true
+    default: "false"
+
+  CLICK_GITHUB_USERNAME_POST:
+    description: "POST click to backend"
+    required: true
+    default: "false"
+
+runs:
+  using: "node16"
+  main: "../action.js"
