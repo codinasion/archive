@@ -29,6 +29,10 @@ import clickGithubUsernamePost from "./script/clickGithubUsernamePost.js";
       "CLICK_GITHUB_USERNAME_GET"
     );
 
+    const CLICK_SPECIAL_GITHUB_USERNAME_GET = await core.getInput(
+      "CLICK_SPECIAL_GITHUB_USERNAME_GET"
+    );
+
     const CLICK_GITHUB_USERNAME_POST = await core.getInput(
       "CLICK_GITHUB_USERNAME_POST"
     );
@@ -39,6 +43,15 @@ import clickGithubUsernamePost from "./script/clickGithubUsernamePost.js";
 
     if (CLICK_GITHUB_USERNAME_GET === "true") {
       await clickGithubUsernameGet(BACKEND_URL, BACKEND_ACCESS_TOKEN, TOKEN);
+    }
+
+    if (CLICK_SPECIAL_GITHUB_USERNAME_GET === "true") {
+      await clickGithubUsernameGet(
+        BACKEND_URL,
+        BACKEND_ACCESS_TOKEN,
+        TOKEN,
+        true
+      );
     }
 
     if (CLICK_GITHUB_USERNAME_POST === "true") {

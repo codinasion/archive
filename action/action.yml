@@ -56,6 +56,11 @@ inputs:
     description: "GET and click github username"
     required: true
     default: "false"
+  
+  CLICK_SPECIAL_GITHUB_USERNAME_GET:
+    description: "GET and click special github username"
+    required: true
+    default: "false"
 
   CLICK_GITHUB_USERNAME_POST:
     description: "POST click to backend"

@@ -9,17 +9,31 @@ import getScreenshot from "./chromium.js";
 export default async function clickGithubUsernameGet(
   BACKEND_URL,
   BACKEND_ACCESS_TOKEN,
-  TOKEN
+  TOKEN,
+  SPECIAL = false
 ) {
   try {
     // Get username from backend to click
-    const response = await fetch(`${BACKEND_URL}/archive/github/users/click/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${BACKEND_ACCESS_TOKEN}`,
-      },
-    });
+    if (SPECIAL) {
+      var response = await fetch(
+        `${BACKEND_URL}/archive/github/users/click/special/`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${BACKEND_ACCESS_TOKEN}`,
+          },
+        }
+      );
+    } else {
+      var response = await fetch(`${BACKEND_URL}/archive/github/users/click/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${BACKEND_ACCESS_TOKEN}`,
+        },
+      });
+    }
 
     if (response.status !== 200) {
       throw new Error(
