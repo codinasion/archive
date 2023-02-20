@@ -13,6 +13,7 @@ body:
   - type: checkboxes
     id: stop
     attributes:
+      label: Stop username from being archived.
       options:
         - label: Stop my username from being archived.
           required: true
@@ -20,6 +21,7 @@ body:
   - type: checkboxes
     id: delete
     attributes:
+      label: Delete all archived data.
       options:
         - label: Delete all my archived data.
           required: false

@@ -13,6 +13,7 @@ body:
   - type: checkboxes
     id: verify
     attributes:
+      label: Allow username to be archived.
       options:
         - label: I allow my username to be archived regularly.
           required: true
