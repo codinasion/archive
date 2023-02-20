@@ -2,9 +2,9 @@ name: Scrap Github Usernames
 
 on:
   workflow_dispatch:
-  # # Run every hour
-  # schedule:
-  #   - cron: "0 0/1 * * *"
+  # Run every 6 hour
+  schedule:
+    - cron: "0 0/6 * * *"
 
 jobs:
   scrap-github-usernames:

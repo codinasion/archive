@@ -1,0 +1,18 @@
+name: Add/Verify Username
+description: Verify your username, to be archived regularly.
+labels: ["add-verify-username"]
+body:
+  - type: input
+    id: username
+    attributes:
+      label: Username
+      placeholder: Insert username here
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: verify
+    attributes:
+      options:
+        - label: I allow my username to be archived regularly.
+          required: true

@@ -1,0 +1,25 @@
+name: Delete Username
+description: Stop your username from being archived.
+labels: ["delete-username"]
+body:
+  - type: input
+    id: username
+    attributes:
+      label: Username
+      placeholder: Insert username here
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: stop
+    attributes:
+      options:
+        - label: Stop my username from being archived.
+          required: true
+
+  - type: checkboxes
+    id: delete
+    attributes:
+      options:
+        - label: Delete all my archived data.
+          required: false

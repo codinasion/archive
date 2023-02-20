@@ -2,9 +2,9 @@ name: Click Github Username 03
 
 on:
   workflow_dispatch:
-  # # Run every 6 minutes
-  # schedule:
-  #   - cron: "3/6 * * * *"
+  # Run every 6 minutes
+  schedule:
+    - cron: "3/6 * * * *"
 
 env:
   IMAGE_BRANCH: images-03
